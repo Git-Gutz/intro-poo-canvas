@@ -77,25 +77,36 @@ let MacCircles = 10;
 let arrayCircle = [];
 
 for (let i = 0; i < MacCircles; i++) {
-  let randomRadius = Math.floor(Math.random() * 10 + 20);
+  // 1. Definimos un radio mínimo y un máximo deseado
+  let minRadius = 15;
+  let maxRadius = 50; 
   
-  // Ajuste para que no se salgan del lienzo (usando el radio)
+  // 2. Medida de seguridad: El radio nunca puede ser mayor a la mitad del lienzo
+  let limiteAbsoluto = Math.min(canvasMultiple.width, canvasMultiple.height) / 2;
+  if (maxRadius > limiteAbsoluto) {
+    maxRadius = limiteAbsoluto;
+  }
+
+  // 3. Generamos el radio aleatorio con los nuevos límites
+  let randomRadius = Math.floor(Math.random() * (maxRadius - minRadius + 1)) + minRadius;
+  
+  // 4. Calculamos X e Y (tu lógica aquí es perfecta para evitar que se salgan)
   let randomX = Math.random() * (canvasMultiple.width - (randomRadius * 2)) + randomRadius;
   let randomY = Math.random() * (canvasMultiple.height - (randomRadius * 2)) + randomRadius;
 
-  // Generamos un color aleatorio (Hue entre 0 y 360)
+  // Generamos un color aleatorio vibrante
   let randomHue = Math.floor(Math.random() * 361);
-  let randomFillColor = `hsl(${randomHue}, 70%, 50%)`; // Un color vibrante
-  let randomStrokeColor = `hsl(${randomHue}, 70%, 30%)`; // El mismo tono pero más oscuro para el borde
+  let randomFillColor = `hsl(${randomHue}, 70%, 50%)`; 
+  let randomStrokeColor = `hsl(${randomHue}, 70%, 30%)`; 
 
-  // Aplicamos los colores al constructor
+  // Instanciamos el círculo
   let miCirculoMultiple = new Circle(
     randomX, 
     randomY, 
     randomRadius, 
-    randomFillColor, // Relleno aleatorio
+    randomFillColor, 
     i + 1, 
-    randomStrokeColor, // Borde aleatorio coordinado
+    randomStrokeColor, 
     "white"
   );
 
