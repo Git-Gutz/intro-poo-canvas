@@ -1,0 +1,58 @@
+/* --- Variables de Color y Diseño --- */
+:root {
+    --bg-color: #f4f6f9;
+    --main-bg: #ffffff;
+    --card-bg: #fafafa;
+    --card-border: #eaeaea;
+    --hover-shadow: rgba(0, 0, 0, 0.15);
+    --accent-color: #0dcaf0; /* Info color de Bootstrap */
+}
+
+/* --- Estilos Generales --- */
+body {
+    background-color: var(--bg-color);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- Contenedor Principal --- */
+.main-container {
+    background-color: var(--main-bg);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.divider-custom {
+    height: 3px;
+    background-color: var(--accent-color);
+    opacity: 1;
+    border-radius: 5px;
+}
+
+/* --- Tarjetas de los Canvas --- */
+.canvas-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.canvas-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px var(--hover-shadow) !important;
+    border-color: rgba(13, 202, 240, 0.3); /* Un ligero brillo azul en el borde */
+}
+
+/* --- Estilos de los Lienzos (Canvas) --- */
+canvas {
+    max-width: 100%;
+    /* Aseguramos que mantenga proporciones si es necesario */
+    height: auto; 
+    border-radius: 10px;
+    background-color: white;
+    /* Transición suave por si modificas el tamaño desde JS */
+    transition: width 0.3s ease, height 0.3s ease; 
+}
+
+/* --- Pequeños ajustes para el Footer --- */
+footer p {
+    letter-spacing: 0.5px;
+}
